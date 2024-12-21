@@ -1,6 +1,12 @@
 #include <iostream>
 #include <string>
 
+void clearLines(int count) {
+    while(count-- > 0) {
+        std::cout << "\x1b[1F" << "\x1b[2K";
+    }
+}
+
 int main() {
     std::string action;
 
@@ -13,6 +19,8 @@ int main() {
         << std::endl;
 
     getline(std::cin, action);
+
+    clearLines(4);
 
     if(action == "K" || action == "k") {
         std::cout << "Knight!" << std::endl;
