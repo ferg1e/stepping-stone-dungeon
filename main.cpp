@@ -2,9 +2,37 @@
 #include <iostream>
 #include <string>
 
+void home();
+void newGame();
+void about();
+
 void clearLines(int count) {
     while(count-- > 0) {
         std::cout << "\x1b[1F" << "\x1b[2K";
+    }
+}
+
+void home() {
+    std::string action;
+
+    std::cout
+        << "Binary Dungeon Tree" << std::endl
+        << "[N]ew Game" << std::endl
+        << "[A]bout" << std::endl;
+
+    getline(std::cin, action);
+
+    clearLines(4);
+
+    if(action == "N" || action == "n") {
+        newGame();
+    }
+    else if(action == "A" || action == "a") {
+        about();
+    }
+    else {
+        std::cout << "Invalid option" << std::endl;
+        std::exit(EXIT_FAILURE);
     }
 }
 
@@ -49,28 +77,8 @@ void about() {
 }
 
 int main() {
-    std::string action;
+    home();
 
-    std::cout
-        << "Binary Dungeon Tree" << std::endl
-        << "[N]ew Game" << std::endl
-        << "[A]bout" << std::endl;
-
-    getline(std::cin, action);
-
-    clearLines(4);
-
-    if(action == "N" || action == "n") {
-        newGame();
-    }
-    else if(action == "A" || action == "a") {
-        about();
-    }
-    else {
-        std::cout << "Invalid option" << std::endl;
-        return 1;
-    }
-    
     std::cout << "End of Game..." << std::endl;
     return 0;
 }
