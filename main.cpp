@@ -47,16 +47,6 @@ void home() {
     }
 }
 
-void room1End(Character& hero) {
-    std::cout
-        << "Room 1" << std::endl
-        << "You chose the "
-        << hero.type << "." << std::endl
-        << "Where to next?" << std::endl
-        << "[L]eft Door (Room 2)" << std::endl
-        << "[R]ight Door (Room 3)" << std::endl;
-}
-
 void newGame() {
     std::string action;
 
@@ -68,30 +58,44 @@ void newGame() {
         << "[A]ssassin"
         << std::endl;
 
+    bool isKnight {false};
+    bool isAssassin {false};
+
     getline(std::cin, action);
+
+    isKnight = action == "K" || action == "k";
+    isAssassin = action == "A" || action == "a";
 
     clearScreen();
 
+    if(!isKnight && !isAssassin) {
+        std::cout
+            << "invalid option"
+            << std::endl;
+
+        std::exit(EXIT_FAILURE);
+    }
+
     Character hero;
 
-    if(action == "K" || action == "k") {
+    if(isKnight) {
         hero.type = "Knight";
         hero.strength = 10;
         hero.speed = 5;
         hero.hp = 20;
-        room1End(hero);
     }
-    else if(action == "A" || action == "a") {
+    else {
         hero.type = "Assassin";
         hero.strength = 5;
         hero.speed = 10;
         hero.hp = 20;
-        room1End(hero);
     }
-    else {
-        std::cout << "Unknown character" << std::endl;
-        std::exit(EXIT_FAILURE);
-    }
+
+    std::cout
+        << "You chose the "
+        << hero.type << "." << std::endl
+        << "[E]nter the Dungeon" << std::endl
+        << "[O]ops, change character" << std::endl;
 }
 
 void about() {
