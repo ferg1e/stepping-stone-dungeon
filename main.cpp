@@ -96,6 +96,25 @@ void newGame() {
         << hero.type << "." << std::endl
         << "[E]nter the Dungeon" << std::endl
         << "[O]ops, change character" << std::endl;
+
+    bool isEnter {false};
+    bool isOops {false};
+
+    while(!isEnter && !isOops) {
+        getline(std::cin, action);
+        isEnter = action == "E" || action == "e";
+        isOops = action == "O" || action == "o";
+        clearLines(1);
+    }
+
+    clearScreen();
+
+    if(isEnter) {
+        std::cout << "entering dungeon..." << std::endl;
+    }
+    else {
+        newGame();
+    }
 }
 
 void about() {
