@@ -6,6 +6,13 @@ void home();
 void newGame();
 void about();
 
+struct Character {
+    std::string type;
+    int strength;
+    int speed;
+    int hp;
+};
+
 void clearScreen() {
     system("clear");
 }
@@ -40,6 +47,16 @@ void home() {
     }
 }
 
+void room1End(Character& hero) {
+    std::cout
+        << "Room 1" << std::endl
+        << "You chose the "
+        << hero.type << "." << std::endl
+        << "Where to next?" << std::endl
+        << "[L]eft Door (Room 2)" << std::endl
+        << "[R]ight Door (Room 3)" << std::endl;
+}
+
 void newGame() {
     std::string action;
 
@@ -55,11 +72,21 @@ void newGame() {
 
     clearScreen();
 
+    Character hero;
+
     if(action == "K" || action == "k") {
-        std::cout << "Knight!" << std::endl;
+        hero.type = "Knight";
+        hero.strength = 10;
+        hero.speed = 5;
+        hero.hp = 20;
+        room1End(hero);
     }
     else if(action == "A" || action == "a") {
-        std::cout << "Assassin!" << std::endl;
+        hero.type = "Assassin";
+        hero.strength = 5;
+        hero.speed = 10;
+        hero.hp = 20;
+        room1End(hero);
     }
     else {
         std::cout << "Unknown character" << std::endl;
