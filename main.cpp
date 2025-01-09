@@ -23,6 +23,14 @@ void clearLines(int count) {
     }
 }
 
+void room1a() {
+    std::cout
+        << "<Room 1>" << std::endl
+        << "You enter the dungeon and hear a dripping noise. In the half darkness you make out a passageway straight ahead and stairs off to the left. Which way do you want to go?" << std::endl
+        << "[P]assageway" << std::endl
+        << "[S]tairs" << std::endl; 
+}
+
 void home() {
     std::string action;
 
@@ -110,7 +118,7 @@ void newGame() {
     clearScreen();
 
     if(isEnter) {
-        std::cout << "entering dungeon..." << std::endl;
+        room1a();
     }
     else {
         newGame();
