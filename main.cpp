@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include "Hero.h"
 #include <iostream>
 #include <string>
 
@@ -140,10 +141,9 @@ void about() {
 }
 
 int main() {
-    clearScreen();
-    home();
+    Hero hero {"Knight", 25};
 
-    std::cout << "End of Game..." << std::endl;
+    std::cout << hero.type << std::endl;
     return 0;
 }
 
