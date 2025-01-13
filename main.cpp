@@ -1,3 +1,4 @@
+#include "BasicScene.h"
 #include <cstdlib>
 #include "Hero.h"
 #include <iostream>
@@ -142,8 +143,10 @@ void about() {
 
 int main() {
     Hero hero {"Knight", 25};
+	BasicScene about;
 
     std::cout << hero.type << std::endl;
+	about.render(&hero);
     return 0;
 }
 
