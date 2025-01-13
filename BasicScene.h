@@ -8,15 +8,15 @@
 #include <vector>
 
 struct BasicScene : Scene {
-	std::string m_desc;
-	std::vector<SceneOption> m_options;
+	std::string desc;
+	std::vector<SceneOption> options;
 
 	BasicScene(
-		std::string desc = "",
-		std::vector<SceneOption> options = {}
+		std::string c_desc = "",
+		std::vector<SceneOption> c_options = {}
 	)
-		: m_desc {desc}
-		, m_options {options}
+		: desc {c_desc}
+		, options {c_options}
 	{}
 
 	Scene* render(Hero* hero) override;
