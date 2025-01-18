@@ -5,7 +5,7 @@
 int main() {
 
 	//
-    Hero hero;
+	Hero hero;
 
 	//
 	BasicScene about;
@@ -29,6 +29,6 @@ int main() {
 	std::cout << "game while loop exited, uh oh" << std::endl;
 
 	//
-    return 0;
+	return 0;
 }
 
