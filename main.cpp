@@ -10,7 +10,7 @@ int main() {
 	//
 	BasicScene about;
 	BasicScene home {
-		"Binary Dungeon Tree",
+		"Stepping Stone Dungeon",
 		{{"About", &about}}
 	};
 
