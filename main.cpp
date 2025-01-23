@@ -1,5 +1,6 @@
 #include "BasicScene.h"
 #include "Hero.h"
+#include "NewGameScene.h"
 #include <iostream>
 
 int main() {
@@ -9,9 +10,18 @@ int main() {
 
 	//
 	BasicScene about;
+
+	NewGameScene newGame {
+		"new game desc",
+		nullptr
+	};
+
 	BasicScene home {
 		"Stepping Stone Dungeon",
-		{{"About", &about}}
+		{
+			{"New Game", &newGame},
+			{"About", &about}
+		}
 	};
 
 	about.desc = "about blurb here";
@@ -24,9 +34,6 @@ int main() {
 	while(next_scene != nullptr) {
 		next_scene = next_scene->render(&hero);
 	}
-
-	//
-	std::cout << "game while loop exited, uh oh" << std::endl;
 
 	//
 	return 0;
