@@ -29,7 +29,7 @@ Scene* NewGameScene::render(Hero* hero) {
 		clearLines(1);
 
 		for(Hero h : heros) {
-			if(action == h.type.substr(0, 1)) {
+			if(strToLower(action) == strToLower(h.type.substr(0, 1))) {
 				*hero = h;
 				return next;
 			}

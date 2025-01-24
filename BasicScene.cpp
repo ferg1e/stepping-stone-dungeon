@@ -23,7 +23,7 @@ Scene* BasicScene::render(Hero* hero) {
 		clearLines(1);
 
 		for(SceneOption o : options) {
-			if(action == o.label.substr(0, 1)) {
+			if(strToLower(action) == strToLower(o.label.substr(0, 1))) {
 				return o.next;
 			}
 		}
