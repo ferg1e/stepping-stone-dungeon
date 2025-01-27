@@ -1,5 +1,7 @@
 #include "BasicScene.h"
 #include "Hero.h"
+#include "Monster.h"
+#include "MonsterScene.h"
 #include "NewGameScene.h"
 #include <iostream>
 
@@ -9,11 +11,15 @@ int main() {
 	Hero hero;
 
 	//
+	Monster bat {"Bat", 5, 5, 2};
+
+	//
 	BasicScene about;
+	MonsterScene room1 {{bat, bat}};
 
 	NewGameScene newGame {
 		"new game desc",
-		nullptr
+		&room1
 	};
 
 	BasicScene home {
