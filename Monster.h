@@ -5,7 +5,8 @@
 
 struct Monster {
 	std::string type;
-	int hp;
+	int maxHp;
+	int currHp;
 	int speed;
 	int strength;
 };

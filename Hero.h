@@ -5,7 +5,10 @@
 
 struct Hero {
 	std::string type;
-	int hp;
+	int maxHp;
+	int currHp;
+	int speed;
+	int strength;
 };
 
 #endif

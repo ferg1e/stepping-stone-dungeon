@@ -10,7 +10,7 @@ Scene* NewGameScene::render(Hero* hero) {
 	std::cout << desc << std::endl << std::endl;
 
 	std::array<Hero, 1> heros {
-		{"Knight", 10}
+		{"Knight", 10, 10, 6, 3}
 	};
 
 	for(Hero h : heros) {

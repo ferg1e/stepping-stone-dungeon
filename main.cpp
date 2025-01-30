@@ -11,11 +11,11 @@ int main() {
 	Hero hero;
 
 	//
-	Monster bat {"Bat", 5, 5, 2};
+	Monster bat {"Bat", 5, 5, 5, 2};
 
 	//
 	BasicScene about;
-	MonsterScene room1 {{bat, bat}};
+	MonsterScene room1 {{bat}};
 
 	NewGameScene newGame {
 		"new game desc",
