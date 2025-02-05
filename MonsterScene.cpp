@@ -4,8 +4,6 @@
 #include <vector>
 
 Scene* MonsterScene::render(Hero* hero) {
-	clearScreen();
-
 	/*
 	- turn order for hero and monsters.
 	- 0 = hero.
@@ -25,6 +23,8 @@ Scene* MonsterScene::render(Hero* hero) {
 
 	//
 	while(isStillFighting) {
+		clearScreen();
+
 		for(Monster m : monsters) {
 			std::cout
 				<< m.type
@@ -57,11 +57,30 @@ Scene* MonsterScene::render(Hero* hero) {
 
 				++mCount;
 			}
+
+			std::string action;
+
+			while(true) {
+				getline(std::cin, action);
+				clearLines(1);
+
+				int actionInt = std::stoi(action);
+				bool isActionOkay = actionInt > 0
+					&& actionInt <= monsters.size();
+
+				if(isActionOkay) {
+					--monsters[actionInt - 1].currHp;
+					break;
+				}
+			}
+		}
+		else {
+			std::cout << "monster turn" << std::endl;
+			isStillFighting = false;
 		}
 
 		//
 		++currTurn;
-		isStillFighting = false;
 	}
 
 	return nullptr;
