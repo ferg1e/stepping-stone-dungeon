@@ -64,7 +64,15 @@ Scene* MonsterScene::render(Hero* hero) {
 				getline(std::cin, action);
 				clearLines(1);
 
-				int actionInt = std::stoi(action);
+				//
+				int actionInt {0};
+
+				try {
+					actionInt = std::stoi(action);
+				}
+				catch(...) {}
+
+				//
 				bool isActionOkay = actionInt > 0
 					&& actionInt <= monsters.size();
 
