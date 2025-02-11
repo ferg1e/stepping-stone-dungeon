@@ -1,6 +1,8 @@
+#include <chrono>
 #include "functions.h"
 #include <iostream>
 #include "MonsterScene.h"
+#include <thread>
 #include <vector>
 
 Scene* MonsterScene::render(Hero* hero) {
@@ -83,12 +85,28 @@ Scene* MonsterScene::render(Hero* hero) {
 			}
 		}
 		else {
-			std::cout << "monster turn" << std::endl;
-			isStillFighting = false;
+
+			//
+			std::cout
+				<< "It's the bat's turn"
+				<< std::endl;
+
+			std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+
+			std::cout
+				<< "Bat attacks hero"
+				<< std::endl;
+			--hero->currHp;
+
+			std::this_thread::sleep_for(std::chrono::milliseconds(1500));
 		}
 
 		//
 		++currTurn;
+
+		if(currTurn == turnOrder.size()) {
+			currTurn = 0;
+		}
 	}
 
 	return nullptr;
