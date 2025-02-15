@@ -80,6 +80,7 @@ Scene* MonsterScene::render(Hero* hero) {
 
 				if(isActionOkay) {
 					--monsters[actionInt - 1].currHp;
+					isStillFighting = !isAllMonstersDead();
 					break;
 				}
 			}
@@ -110,5 +111,15 @@ Scene* MonsterScene::render(Hero* hero) {
 	}
 
 	return nullptr;
+}
+
+bool MonsterScene::isAllMonstersDead() {
+	for(Monster m : monsters) {
+		if(m.currHp > 0) {
+			return false;
+		}
+	}
+
+	return true;
 }
 

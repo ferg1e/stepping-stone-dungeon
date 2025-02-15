@@ -16,6 +16,9 @@ struct MonsterScene : Scene {
 	{}
 
 	Scene* render(Hero* hero) override;
+
+private:
+	bool isAllMonstersDead();
 };
 
 #endif
