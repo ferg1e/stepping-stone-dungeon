@@ -99,6 +99,12 @@ Scene* MonsterScene::render(Hero* hero) {
 				<< std::endl;
 			--hero->currHp;
 
+			//
+			if(hero->currHp <= 0) {
+				isStillFighting = false;
+			}
+
+			//
 			std::this_thread::sleep_for(std::chrono::milliseconds(1500));
 		}
 
