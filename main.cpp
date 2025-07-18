@@ -7,41 +7,41 @@
 
 int main() {
 
-	//
-	Hero hero;
+    //
+    Hero hero;
 
-	//
-	Monster bat {"Bat", 5, 5, 5, 2};
+    //
+    Monster bat {"Bat", 5, 5, 5, 2};
 
-	//
-	BasicScene about;
-	MonsterScene room1 {{bat}};
+    //
+    BasicScene about;
+    MonsterScene room1 {{bat}};
 
-	NewGameScene newGame {
-		"new game desc",
-		&room1
-	};
+    NewGameScene newGame {
+        "new game desc",
+        &room1
+    };
 
-	BasicScene home {
-		"Stepping Stone Dungeon",
-		{
-			{"New Game", &newGame},
-			{"About", &about}
-		}
-	};
+    BasicScene home {
+        "Stepping Stone Dungeon",
+        {
+            {"New Game", &newGame},
+            {"About", &about}
+        }
+    };
 
-	about.desc = "about blurb here";
-	about.options = {{"Back", &home}};
+    about.desc = "about blurb here";
+    about.options = {{"Back", &home}};
 
-	//
-	Scene* next_scene = &home;
+    //
+    Scene* next_scene = &home;
 
-	//
-	while(next_scene != nullptr) {
-		next_scene = next_scene->render(&hero);
-	}
+    //
+    while(next_scene != nullptr) {
+        next_scene = next_scene->render(&hero);
+    }
 
-	//
-	return 0;
+    //
+    return 0;
 }
 
