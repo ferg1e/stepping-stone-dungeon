@@ -4,29 +4,29 @@
 #include <string>
 
 Scene* BasicScene::render(Hero* hero) {
-	clearScreen();
-	std::cout << desc << std::endl << std::endl;
+    clearScreen();
+    std::cout << desc << std::endl << std::endl;
 
-	for(SceneOption o : options) {
-		std::cout
-			<< "["
-			<< o.label.substr(0, 1)
-			<< "]"
-			<< o.label.substr(1)
-			<< std::endl;
-	}
+    for(SceneOption o : options) {
+        std::cout
+            << "["
+            << o.label.substr(0, 1)
+            << "]"
+            << o.label.substr(1)
+            << std::endl;
+    }
 
-	std::string action;
+    std::string action;
 
-	while(true) {
-		getline(std::cin, action);
-		clearLines(1);
+    while(true) {
+        getline(std::cin, action);
+        clearLines(1);
 
-		for(SceneOption o : options) {
-			if(strToLower(action) == strToLower(o.label.substr(0, 1))) {
-				return o.next;
-			}
-		}
-	}
+        for(SceneOption o : options) {
+            if(strToLower(action) == strToLower(o.label.substr(0, 1))) {
+                return o.next;
+            }
+        }
+    }
 }
 

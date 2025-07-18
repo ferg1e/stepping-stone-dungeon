@@ -4,7 +4,7 @@
 #include "Hero.h"
 
 struct Scene {
-	virtual Scene* render(Hero* hero) = 0;
+    virtual Scene* render(Hero* hero) = 0;
 };
 
 #endif

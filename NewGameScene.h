@@ -6,18 +6,18 @@
 #include <string>
 
 struct NewGameScene : Scene {
-	std::string desc;
-	Scene* next;
+    std::string desc;
+    Scene* next;
 
-	NewGameScene(
-		std::string c_desc = "",
-		Scene* c_next = {}
-	)
-		: desc {c_desc}
-		, next {c_next}
-	{}
+    NewGameScene(
+        std::string c_desc = "",
+        Scene* c_next = {}
+    )
+        : desc {c_desc}
+        , next {c_next}
+    {}
 
-	Scene* render(Hero* hero) override;
+    Scene* render(Hero* hero) override;
 };
 
 #endif

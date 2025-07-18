@@ -4,11 +4,11 @@
 #include <string>
 
 struct Monster {
-	std::string type;
-	int maxHp;
-	int currHp;
-	int speed;
-	int strength;
+    std::string type;
+    int maxHp;
+    int currHp;
+    int speed;
+    int strength;
 };
 
 #endif

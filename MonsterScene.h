@@ -7,18 +7,18 @@
 #include <vector>
 
 struct MonsterScene : Scene {
-	std::vector<Monster> monsters;
+    std::vector<Monster> monsters;
 
-	MonsterScene(
-		std::vector<Monster> c_monsters = {}
-	)
-		: monsters {c_monsters}
-	{}
+    MonsterScene(
+        std::vector<Monster> c_monsters = {}
+    )
+        : monsters {c_monsters}
+    {}
 
-	Scene* render(Hero* hero) override;
+    Scene* render(Hero* hero) override;
 
 private:
-	bool isAllMonstersDead();
+    bool isAllMonstersDead();
 };
 
 #endif

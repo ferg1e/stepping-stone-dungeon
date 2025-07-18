@@ -6,126 +6,126 @@
 #include <vector>
 
 Scene* MonsterScene::render(Hero* hero) {
-	/*
-	- turn order for hero and monsters.
-	- 0 = hero.
-	- all other numbers = a monster.
-	- the monster numbers are an index into
-	the monsters vector, but you need to
-	subtract one.
-	- this turn order keeps repeating.
-	*/
-	std::vector<int> turnOrder {0, 1};
+    /*
+    - turn order for hero and monsters.
+    - 0 = hero.
+    - all other numbers = a monster.
+    - the monster numbers are an index into
+    the monsters vector, but you need to
+    subtract one.
+    - this turn order keeps repeating.
+    */
+    std::vector<int> turnOrder {0, 1};
 
-	//index into turnOrder vector
-	int currTurn {0};
+    //index into turnOrder vector
+    int currTurn {0};
 
-	//
-	bool isStillFighting {true};
+    //
+    bool isStillFighting {true};
 
-	//
-	while(isStillFighting) {
-		clearScreen();
+    //
+    while(isStillFighting) {
+        clearScreen();
 
-		for(Monster m : monsters) {
-			std::cout
-				<< m.type
-				<< " (" << m.currHp << "/"
-				<< m.maxHp << ")"
-				<< std::endl;
-		}
+        for(Monster m : monsters) {
+            std::cout
+                << m.type
+                << " (" << m.currHp << "/"
+                << m.maxHp << ")"
+                << std::endl;
+        }
 
-		std::cout
-			<< std::endl
-			<< hero->type
-			<< " (" << hero->currHp << "/"
-			<< hero->maxHp << ")"
-			<< std::endl << std::endl;
+        std::cout
+            << std::endl
+            << hero->type
+            << " (" << hero->currHp << "/"
+            << hero->maxHp << ")"
+            << std::endl << std::endl;
 
-		//
-		int whoseTurn = turnOrder.at(currTurn);
-		bool isHerosTurn = whoseTurn == 0;
+        //
+        int whoseTurn = turnOrder.at(currTurn);
+        bool isHerosTurn = whoseTurn == 0;
 
-		//
-		if(isHerosTurn) {
-			int mCount = 1;
+        //
+        if(isHerosTurn) {
+            int mCount = 1;
 
-			for(Monster m : monsters) {
-				std::cout
-					<< "[" << mCount << "]"
-					<< " Attack "
-					<< m.type
-					<< std::endl;
+            for(Monster m : monsters) {
+                std::cout
+                    << "[" << mCount << "]"
+                    << " Attack "
+                    << m.type
+                    << std::endl;
 
-				++mCount;
-			}
+                ++mCount;
+            }
 
-			std::string action;
+            std::string action;
 
-			while(true) {
-				getline(std::cin, action);
-				clearLines(1);
+            while(true) {
+                getline(std::cin, action);
+                clearLines(1);
 
-				//
-				int actionInt {0};
+                //
+                int actionInt {0};
 
-				try {
-					actionInt = std::stoi(action);
-				}
-				catch(...) {}
+                try {
+                    actionInt = std::stoi(action);
+                }
+                catch(...) {}
 
-				//
-				bool isActionOkay = actionInt > 0
-					&& actionInt <= monsters.size();
+                //
+                bool isActionOkay = actionInt > 0
+                    && actionInt <= monsters.size();
 
-				if(isActionOkay) {
-					--monsters[actionInt - 1].currHp;
-					isStillFighting = !isAllMonstersDead();
-					break;
-				}
-			}
-		}
-		else {
+                if(isActionOkay) {
+                    --monsters[actionInt - 1].currHp;
+                    isStillFighting = !isAllMonstersDead();
+                    break;
+                }
+            }
+        }
+        else {
 
-			//
-			std::cout
-				<< "It's the bat's turn"
-				<< std::endl;
+            //
+            std::cout
+                << "It's the bat's turn"
+                << std::endl;
 
-			std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+            std::this_thread::sleep_for(std::chrono::milliseconds(1500));
 
-			std::cout
-				<< "Bat attacks hero"
-				<< std::endl;
-			--hero->currHp;
+            std::cout
+                << "Bat attacks hero"
+                << std::endl;
+            --hero->currHp;
 
-			//
-			if(hero->currHp <= 0) {
-				isStillFighting = false;
-			}
+            //
+            if(hero->currHp <= 0) {
+                isStillFighting = false;
+            }
 
-			//
-			std::this_thread::sleep_for(std::chrono::milliseconds(1500));
-		}
+            //
+            std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+        }
 
-		//
-		++currTurn;
+        //
+        ++currTurn;
 
-		if(currTurn == turnOrder.size()) {
-			currTurn = 0;
-		}
-	}
+        if(currTurn == turnOrder.size()) {
+            currTurn = 0;
+        }
+    }
 
-	return nullptr;
+    return nullptr;
 }
 
 bool MonsterScene::isAllMonstersDead() {
-	for(Monster m : monsters) {
-		if(m.currHp > 0) {
-			return false;
-		}
-	}
+    for(Monster m : monsters) {
+        if(m.currHp > 0) {
+            return false;
+        }
+    }
 
-	return true;
+    return true;
 }
 

@@ -5,8 +5,8 @@
 #include <string>
 
 struct SceneOption {
-	std::string label;
-	Scene* next;
+    std::string label;
+    Scene* next;
 };
 
 #endif
